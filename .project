@@ -1,0 +1,13 @@
+# Gambas Project File 3.0
+Title=renombrar
+Startup=FMain
+Icon=renombrar icono.png
+Version=0.0.1
+Component=gb.image
+Component=gb.gui.qt
+Component=gb.form
+Description="Renombrar grupo de ficheros facilmente"
+Authors="Julio Sanchez Berro"
+TabSize=2
+Language=en_US
+Packager=1

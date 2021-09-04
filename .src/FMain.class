@@ -1,0 +1,112 @@
+' Gambas class file
+
+Public Sub ButtonCargarFicheros_Click()
+
+  Dim arrayficheros As String[]
+  Dim TerminarFicheros As New String[]
+  Dim ficherotmp As String
+
+  arrayficheros = Dir(DirBox1.value, "*", gb.file)
+
+  For Each ficherotmp In arrayficheros
+    TerminarFicheros.Add(DirBox1.value & "/" & ficherotmp)
+  Next
+
+  TextAreaListaFicheros.Text = TerminarFicheros.Join("\n")
+
+End
+
+Public Sub ButtonEjecutarAdelante_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    Print nombrefichero
+    Move nombrefichero To File.Dir(nombrefichero) & "/" & TextBoxPalabraDelante.text & " " & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & TextBoxPalabraDelante.text & " " & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & "/n"
+
+  Next
+
+  TextAreaListaFicheros.Text = nuevocontenido
+
+End
+
+Public Sub ButtonEjecutarAtras_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    ' Print nombrefichero
+    Move nombrefichero To File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & " " & TextBoxPalabraAtras.text & "." & File.Ext(nombrefichero)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & " " & TextBoxPalabraAtras.text & "." & File.Ext(nombrefichero) & "/n"
+  Next
+
+  TextAreaListaFicheros.Text = nuevocontenido
+
+End
+
+Public Sub ButtonEjecutarEliminarPalabra_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    ' Print nombrefichero
+    Try Move nombrefichero To File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxEliminar.text, "")
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxEliminar.text, "") & "/n"
+  Next
+
+  TextAreaListaFicheros.Text = nuevocontenido
+
+End
+
+Public Sub Form_Open()
+
+End
+
+Public Sub Form_Show()
+
+  Me.center
+
+End
+
+Public Function OBTENERFICHEROS() As String[]
+
+  Return Split(TextAreaListaFicheros.TEXT, "\n")
+
+End
+
+Public Sub TextAreaListaFicheros_Leave()
+
+  TextAreaListaFicheros.Text = Replace(TextAreaListaFicheros.text, "file://", "")
+  TextAreaListaFicheros.Text = Replace(TextAreaListaFicheros.text, "%20", " ")
+
+End
+
+Public Sub ButtonEjecutarReemplazar_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    ' Print nombrefichero
+    Try Move nombrefichero To File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxReemplaza.text, TextBoxPor.text)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxReemplaza.text, TextBoxPor.text) & "/n"
+  Next
+  TextAreaListaFicheros.Text = nuevocontenido
+
+End

@@ -1,0 +1,98 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,160,83)
+  Icon = Picture["renombrar icono.png"]
+  { Label1 Label
+    MoveScaled(1,1,6,4)
+    Text = ("Ruta:")
+  }
+  { Label2 Label
+    MoveScaled(119,7,25,4)
+    Alignment = Align.Left
+    Text = ("Poner Delante del nombre:")
+  }
+  { TextBoxPalabraDelante TextBox
+    MoveScaled(121,11,22,4)
+  }
+  { ButtonEjecutarAdelante Button
+    MoveScaled(147,11,12,4)
+    Text = ("Ejecutar")
+  }
+  { TextBoxPalabraAtras TextBox
+    MoveScaled(121,25,22,4)
+  }
+  { TextBoxEliminar TextBox
+    MoveScaled(121,42,22,4)
+  }
+  { Label3 Label
+    MoveScaled(119,20,25,4)
+    Alignment = Align.Left
+    Text = ("Poner Detrás del nombre:")
+  }
+  { Label4 Label
+    MoveScaled(119,37,25,4)
+    Alignment = Align.Left
+    Text = ("Eliminar Palabra del nombre:")
+  }
+  { ButtonEjecutarAtras Button
+    MoveScaled(147,25,12,4)
+    Text = ("Ejecutar")
+  }
+  { ButtonEjecutarEliminarPalabra Button
+    MoveScaled(147,41,12,4)
+    Text = ("Ejecutar")
+  }
+  { Label5 Label
+    MoveScaled(118,1,42,5)
+    Font = Font["Bold,+1"]
+    Alignment = Align.Center
+    Text = ("Opciones:")
+  }
+  { ButtonEjecutarReemplazar Button
+    MoveScaled(147,67,12,4)
+    Text = ("Ejecutar")
+  }
+  { Label6 Label
+    MoveScaled(110,63,25,4)
+    Alignment = Align.Right
+    Text = ("Por esta palabra:")
+  }
+  { TextBoxPor TextBox
+    MoveScaled(121,67,22,4)
+  }
+  { Label7 Label
+    MoveScaled(119,53,25,4)
+    Alignment = Align.Left
+    Text = ("Palabra a sustituir:")
+  }
+  { TextBoxReemplaza TextBox
+    MoveScaled(121,57,22,4)
+  }
+  { TextAreaListaFicheros TextArea
+    MoveScaled(2,13,112,67)
+  }
+  { Separator1 Separator
+    MoveScaled(117,0,1,82)
+  }
+  { Separator2 Separator
+    MoveScaled(118,17,42,1)
+  }
+  { Separator3 Separator
+    MoveScaled(118,34,42,1)
+  }
+  { Separator4 Separator
+    MoveScaled(117,51,43,1)
+  }
+  { ButtonCargarFicheros Button
+    MoveScaled(40,6,28,6)
+    Text = ("Leer")
+    Picture = Picture["ejecuta.png"]
+  }
+  { Separator5 Separator
+    MoveScaled(118,6,42,1)
+  }
+  { DirBox1 DirBox
+    MoveScaled(7,1,107,4)
+  }
+}

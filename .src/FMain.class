@@ -6,10 +6,10 @@ Public Sub ButtonCargarFicheros_Click()
   Dim TerminarFicheros As New String[]
   Dim ficherotmp As String
 
-  arrayficheros = Dir(DirBox1.value, "*", gb.file)
+  arrayficheros = Dir(TextBoxDir.text, "*", gb.file)
 
   For Each ficherotmp In arrayficheros
-    TerminarFicheros.Add(DirBox1.value & "/" & ficherotmp)
+    TerminarFicheros.Add(TextBoxDir.text & "/" & ficherotmp)
   Next
 
   TextAreaListaFicheros.Text = TerminarFicheros.Join("\n")
@@ -25,9 +25,9 @@ Public Sub ButtonEjecutarAdelante_Click()
   arrayficheros = OBTENERFICHEROS()
 
   For Each nombrefichero In arrayficheros
-    Print nombrefichero
+    If nombrefichero = "" Then Continue
     Move nombrefichero To File.Dir(nombrefichero) & "/" & TextBoxPalabraDelante.text & " " & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero)
-    nuevocontenido &= File.Dir(nombrefichero) & "/" & TextBoxPalabraDelante.text & " " & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & "/n"
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & TextBoxPalabraDelante.text & " " & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & gb.CrLf
 
   Next
 
@@ -44,9 +44,9 @@ Public Sub ButtonEjecutarAtras_Click()
   arrayficheros = OBTENERFICHEROS()
 
   For Each nombrefichero In arrayficheros
-    ' Print nombrefichero
+    If nombrefichero = "" Then Continue
     Move nombrefichero To File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & " " & TextBoxPalabraAtras.text & "." & File.Ext(nombrefichero)
-    nuevocontenido &= File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & " " & TextBoxPalabraAtras.text & "." & File.Ext(nombrefichero) & "/n"
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & " " & TextBoxPalabraAtras.text & "." & File.Ext(nombrefichero) & gb.CrLf
   Next
 
   TextAreaListaFicheros.Text = nuevocontenido
@@ -62,9 +62,9 @@ Public Sub ButtonEjecutarEliminarPalabra_Click()
   arrayficheros = OBTENERFICHEROS()
 
   For Each nombrefichero In arrayficheros
-    ' Print nombrefichero
+    If nombrefichero = "" Then Continue
     Try Move nombrefichero To File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxEliminar.text, "")
-    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxEliminar.text, "") & "/n"
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxEliminar.text, "") & gb.CrLf
   Next
 
   TextAreaListaFicheros.Text = nuevocontenido
@@ -73,11 +73,13 @@ End
 
 Public Sub Form_Open()
 
+  LabelVersion.Text = Application.Name & "\n" & "Version " & Application.Version
+
 End
 
 Public Sub Form_Show()
 
-  Me.center
+  Settings.Read(Me)
 
 End
 
@@ -103,10 +105,32 @@ Public Sub ButtonEjecutarReemplazar_Click()
   arrayficheros = OBTENERFICHEROS()
 
   For Each nombrefichero In arrayficheros
-    ' Print nombrefichero
+    If nombrefichero = "" Then Continue
     Try Move nombrefichero To File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxReemplaza.text, TextBoxPor.text)
-    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxReemplaza.text, TextBoxPor.text) & "/n"
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Replace(File.name(nombrefichero), TextBoxReemplaza.text, TextBoxPor.text) & gb.CrLf
   Next
   TextAreaListaFicheros.Text = nuevocontenido
+
+End
+
+Public Sub ButtonDir_Click()
+
+  If Dialog.SelectDirectory() Then
+    Return
+  Else
+    TextBoxDir.Text = Dialog.Path
+  Endif
+
+End
+
+Public Sub ButtonSalir_Click()
+
+  Me.Close()
+
+End
+
+Public Sub Form_Close()
+
+  Settings.Write(Me)
 
 End

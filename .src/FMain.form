@@ -1,88 +1,80 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,160,83)
+  MoveScaled(0,0,167,90)
   Icon = Picture["renombrar icono.png"]
   { Label1 Label
     MoveScaled(1,1,6,4)
     Text = ("Ruta:")
   }
   { Label2 Label
-    MoveScaled(119,7,25,4)
+    MoveScaled(126,23,25,4)
     Alignment = Align.Left
     Text = ("Poner Delante del nombre:")
   }
   { TextBoxPalabraDelante TextBox
-    MoveScaled(121,11,22,4)
+    MoveScaled(128,27,22,4)
   }
   { ButtonEjecutarAdelante Button
-    MoveScaled(147,11,12,4)
+    MoveScaled(154,27,12,4)
     Text = ("Ejecutar")
   }
   { TextBoxPalabraAtras TextBox
-    MoveScaled(121,25,22,4)
+    MoveScaled(128,39,22,4)
   }
   { TextBoxEliminar TextBox
-    MoveScaled(121,42,22,4)
+    MoveScaled(128,51,22,4)
   }
   { Label3 Label
-    MoveScaled(119,20,25,4)
+    MoveScaled(126,34,25,4)
     Alignment = Align.Left
     Text = ("Poner Detrás del nombre:")
   }
   { Label4 Label
-    MoveScaled(119,37,25,4)
+    MoveScaled(126,47,25,4)
     Alignment = Align.Left
     Text = ("Eliminar Palabra del nombre:")
   }
   { ButtonEjecutarAtras Button
-    MoveScaled(147,25,12,4)
+    MoveScaled(153,39,12,4)
     Text = ("Ejecutar")
   }
   { ButtonEjecutarEliminarPalabra Button
-    MoveScaled(147,41,12,4)
+    MoveScaled(154,51,12,4)
     Text = ("Ejecutar")
   }
   { Label5 Label
-    MoveScaled(118,1,42,5)
-    Font = Font["Bold,+1"]
+    MoveScaled(125,15,42,7)
+    Font = Font["Bold,+3"]
     Alignment = Align.Center
     Text = ("Opciones:")
   }
   { ButtonEjecutarReemplazar Button
-    MoveScaled(147,67,12,4)
+    MoveScaled(154,73,12,4)
     Text = ("Ejecutar")
   }
-  { Label6 Label
-    MoveScaled(110,63,25,4)
-    Alignment = Align.Right
-    Text = ("Por esta palabra:")
-  }
   { TextBoxPor TextBox
-    MoveScaled(121,67,22,4)
+    MoveScaled(128,73,22,4)
   }
   { Label7 Label
-    MoveScaled(119,53,25,4)
+    MoveScaled(126,60,25,4)
     Alignment = Align.Left
     Text = ("Palabra a sustituir:")
   }
   { TextBoxReemplaza TextBox
-    MoveScaled(121,57,22,4)
+    MoveScaled(128,65,22,4)
   }
   { TextAreaListaFicheros TextArea
-    MoveScaled(2,13,112,67)
-  }
-  { Separator1 Separator
-    MoveScaled(117,0,1,82)
+    MoveScaled(2,13,121,75)
   }
   { Separator2 Separator
-    MoveScaled(118,17,42,1)
+    MoveScaled(125,33,42,1)
   }
   { Separator3 Separator
-    MoveScaled(118,34,42,1)
+    MoveScaled(124,45,44,1)
   }
   { Separator4 Separator
-    MoveScaled(117,51,43,1)
+    MoveScaled(124,58,43,1)
   }
   { ButtonCargarFicheros Button
     MoveScaled(40,6,28,6)
@@ -90,9 +82,52 @@
     Picture = Picture["ejecuta.png"]
   }
   { Separator5 Separator
-    MoveScaled(118,6,42,1)
+    MoveScaled(125,22,42,1)
   }
-  { DirBox1 DirBox
-    MoveScaled(7,1,107,4)
+  { TextBoxDir TextBox
+    MoveScaled(7,1,109,4)
+  }
+  { ButtonDir Button
+    MoveScaled(117,1,5,4)
+    Picture = Picture["icon:/22/directory"]
+  }
+  { Separator1 Separator
+    MoveScaled(124,0,1,98)
+  }
+  { PictureBox3 PictureBox
+    MoveScaled(136,3,4,4)
+    Picture = Picture["icon:/22/gambas"]
+    Stretch = True
+  }
+  { PictureBox2 PictureBox
+    MoveScaled(160,2,5,5)
+    Picture = Picture["renombrar icono.png"]
+    Stretch = True
+  }
+  { LabelVersion Label
+    MoveScaled(137,2,27,5)
+    Alignment = Align.Center
+  }
+  { Label8 Label
+    MoveScaled(137,8,27,5)
+    Alignment = Align.Center
+    Text = ("© Julio Sanchez Berro\n 2021")
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(126,1,7,11)
+    Picture = Picture["tux_sticker_silver_mini.png"]
+    Stretch = True
+  }
+  { Separator6 Separator
+    MoveScaled(124,13,43,2)
+  }
+  { Label6 Label
+    MoveScaled(126,69,25,4)
+    Alignment = Align.Left
+    Text = ("Por.") & "..."
+  }
+  { ButtonSalir Button
+    MoveScaled(138,82,19,6)
+    Text = ("Salir")
   }
 }

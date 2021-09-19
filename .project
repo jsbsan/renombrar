@@ -2,7 +2,7 @@
 Title=Renombrar
 Startup=FMain
 Icon=renombrar icono.png
-Version=0.0.2
+Version=0.0.3
 Component=gb.image
 Component=gb.gui.qt
 Component=gb.form
@@ -15,7 +15,7 @@ Maintainer=jsbsan
 Address=jusabejusabe@gmail.com
 Url=https://jsbsan.blogspot.com/
 License=General Public License
-PackageName=renombrar-0.0.2
+PackageName=renombrar-0.0.3
 CreateEachDirectory=1
 Packager=1
 Systems=debian

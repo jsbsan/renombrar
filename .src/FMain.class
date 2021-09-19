@@ -6,8 +6,32 @@ Public Sub ButtonCargarFicheros_Click()
   Dim TerminarFicheros As New String[]
   Dim ficherotmp As String
 
-  arrayficheros = Dir(TextBoxDir.text, "*", gb.file)
+  arrayficheros = Dir(TextBoxDir.text, "*", gb.file).Sort()
+  '************************
+  '¿aplicar filtro?
+  '************************
+  If CheckBoxFiltro.value Then
+    Dim listafinal As New String[]
+    Dim listaAdmitido As String[] = Split(ComboBoxFiltro.text, ",")
+    Dim filtropalabra As String
+    Dim admitido As Boolean
 
+    If listaAdmitido.Count <> 0 Then
+      For Each ficherotmp In arrayficheros
+
+        For Each filtropalabra In listaAdmitido
+          If InStr(Upper$(File.name(ficherotmp)), Upper$(filtropalabra)) > 0 Then
+            listafinal.Add(ficherotmp)
+            Break 'salimos de este bloque for...next
+          Endif
+        Next
+
+      Next
+      'hemos revisado toda la lista y la lista que mostrara
+      arrayficheros = listafinal
+
+    Endif
+  Endif
   For Each ficherotmp In arrayficheros
     TerminarFicheros.Add(TextBoxDir.text & "/" & ficherotmp)
   Next
@@ -132,5 +156,47 @@ End
 Public Sub Form_Close()
 
   Settings.Write(Me)
+
+End
+
+Public Sub ButtonNumerarDelante_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+  Dim contador As Integer
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    If nombrefichero = "" Then Continue
+    contador += 1
+    Move nombrefichero To File.Dir(nombrefichero) & "/" & Right("000" & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Right("000" & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & gb.CrLf
+
+  Next
+
+  TextAreaListaFicheros.Text = nuevocontenido
+
+End
+
+Public Sub ButtonNumerarDelante2_Click()
+
+  Dim arrayficheros As String[]
+  Dim nombrefichero As String
+  Dim nuevocontenido As String
+  Dim contador As Integer
+
+  arrayficheros = OBTENERFICHEROS()
+
+  For Each nombrefichero In arrayficheros
+    If nombrefichero = "" Then Continue
+    contador += 1
+    Move nombrefichero To File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & "-" & Right("000" & Str$(contador), 3) & "." & File.Ext(nombrefichero)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & File.BaseName(nombrefichero) & "-" & Right("000" & Str$(contador), 3) & "." & File.Ext(nombrefichero) & gb.CrLf
+
+  Next
+
+  TextAreaListaFicheros.Text = nuevocontenido
 
 End

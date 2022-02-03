@@ -163,4 +163,9 @@
     MoveScaled(135,77,7,3)
     Text = ("-YYY")
   }
+  { ButtonBorrarTextArea Button
+    MoveScaled(117,7,5,5)
+    ToolTip = ("limpiar contenido")
+    Picture = Picture["limpiar32x32.png"]
+  }
 }

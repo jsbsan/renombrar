@@ -200,3 +200,10 @@ Public Sub ButtonNumerarDelante2_Click()
   TextAreaListaFicheros.Text = nuevocontenido
 
 End
+
+Public Sub ButtonBorrarTextArea_Click()
+
+  TextAreaListaFicheros.Text = ""
+  TextBoxDir.Text = ""
+
+End

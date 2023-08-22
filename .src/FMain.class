@@ -165,14 +165,19 @@ Public Sub ButtonNumerarDelante_Click()
   Dim nombrefichero As String
   Dim nuevocontenido As String
   Dim contador As Integer
+  Dim ceros As String = TextAreaContadorCeros.Text
 
   arrayficheros = OBTENERFICHEROS()
-
+  If Val(TextBoxIniciaNumero.text) = 0 Then
+    contador = 0
+  Else
+    contador = Val(TextBoxIniciaNumero.text)
+  Endif
   For Each nombrefichero In arrayficheros
     If nombrefichero = "" Then Continue
     contador += 1
-    Move nombrefichero To File.Dir(nombrefichero) & "/" & Right("000" & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero)
-    nuevocontenido &= File.Dir(nombrefichero) & "/" & Right("000" & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & gb.CrLf
+    Move nombrefichero To File.Dir(nombrefichero) & "/" & Right(ceros & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero)
+    nuevocontenido &= File.Dir(nombrefichero) & "/" & Right(ceros & Str$(contador), 3) & "-" & File.BaseName(nombrefichero) & "." & File.Ext(nombrefichero) & gb.CrLf
 
   Next
 
